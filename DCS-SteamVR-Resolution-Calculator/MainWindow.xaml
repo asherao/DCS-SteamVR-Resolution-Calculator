@@ -1,0 +1,179 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DCS_SteamVR_Resolution_Calculator"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="DCS_SteamVR_Resolution_Calculator.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="450" WindowStyle="None">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        
+    </Window.Resources>
+
+    
+    <Grid>
+
+        <!--Grid Definitions-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="AUTO"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Row Definitions-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="0"/>
+            <!--Title Bar-->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle x:Name="TitleRectangle" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="6" Fill="#FF1C4587" 
+                   MouseLeftButtonDown="TitleRectangle_MouseLeftButtonDown"/>
+
+        <TextBlock Grid.Column="2" Grid.Row="2" Name="TextBlock_scenario1" Text="Scenario 1" Foreground="White"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_scenario1_MouseLeftButtonDown"/>
+        <TextBlock Grid.Column="3" Grid.Row="2" Name="TextBlock_scenario2" Text="Scenario 2" Foreground="White"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_scenario2_MouseLeftButtonDown"/>
+        <TextBlock Grid.Column="4" Grid.Row="2" Name="TextBlock_scenario3" Text="Scenario 3" Foreground="White"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_scenario3_MouseLeftButtonDown"/>
+        
+
+        <TextBlock Grid.Column="1" Grid.Row="2" Name="Title" Text="DCS SteamVR Resolution Calculator " FontWeight="Bold"
+                   HorizontalAlignment="Right" VerticalAlignment="Center" MouseLeftButtonDown="Title_MouseLeftButtonDown"
+                   Foreground="White"/>
+
+       
+        <Button x:Name="button_close" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" 
+                    Margin="0,5" Click="button_close_click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Rectangle Fill="Red" Width="10" Height="10">
+                    </Rectangle>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        
+        
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="HMD Native Resolution Width" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="4" Text="HMD Native Resolution Height" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" Text="Aspect Ratio" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" Text="Width with Lens Distortion Multiplier" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="7" Text="Height with Lens Distortion Multiplier" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="8" Text="Resolution Area" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="9" Text="SteamVR Resolution Per Eye %" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="10" Text="Width with RPE Multiplier" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="11" Text="Height with RPE Multiplier" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="12" Text="SteamVR Custom Resolution Multiplier %" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="13" Text="Width with CRM Multiplier" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="14" Text="Height with CRM Multiplier" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="15" Text="DCS Pixel Density" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="16" Text="DCS Frame Resolution Width" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="17" Text="DCS Frame Resolution Height" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="effectivePdLabel" Grid.Column="1" Grid.Row="18" Text="Effective PD @ 100% RPE and 100% CRM" HorizontalAlignment="Right" VerticalAlignment="Center" MouseDown="effectivePdLabel_mouseDown"/>
+
+
+        <!--<TextBox x:Name="TextBox_HmdNativeResWidth_Scenario1" Grid.Column="2" Grid.Row="3" Text="1440" Margin="1" VerticalAlignment="Center" TextAlignment="Right" />
+        <TextBox x:Name="TextBox_HmdNativeResWidth_Scenario2" Grid.Column="3" Grid.Row="3" Text="1440" Margin="1" VerticalAlignment="Center" TextAlignment="Right" />
+        <TextBox x:Name="TextBox_HmdNativeResWidth_Scenario3" Grid.Column="4" Grid.Row="3" Text="1440" Margin="1" VerticalAlignment="Center" TextAlignment="Right" />-->
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_HmdNativeResWidth_Scenario1" Grid.Column="2" Grid.Row="3" Width="50" Margin="1" Minimum="1" Maximum="5000" Value="1440" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_HmdNativeResWidth_Scenario1_changed" PreviewKeyDown="DoubleUpDown_HmdNativeResWidth_Scenario1_PreviewKeyDown"/>
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_HmdNativeResWidth_Scenario2" Grid.Column="3" Grid.Row="3" Width="50" Margin="1" Minimum="1" Maximum="5000" Value="1440" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_HmdNativeResWidth_Scenario2_ValueChanged" PreviewKeyDown="DoubleUpDown_HmdNativeResWidth_Scenario2_PreviewKeyDown"/>
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_HmdNativeResWidth_Scenario3" Grid.Column="4" Grid.Row="3" Width="50" Margin="1" Minimum="1" Maximum="5000" Value="1440"  VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_HmdNativeResWidth_Scenario3_ValueChanged" PreviewKeyDown="DoubleUpDown_HmdNativeResWidth_Scenario3_PreviewKeyDown"/>
+
+        <!--<TextBox x:Name="TextBox_HmdNativeResHeight_Scenario1" Grid.Column="2" Grid.Row="4" Text="1600" Margin="1" VerticalAlignment="Center" TextAlignment="Right" />
+        <TextBox x:Name="TextBox_HmdNativeResHeight_Scenario2" Grid.Column="3" Grid.Row="4" Text="1600" Margin="1" VerticalAlignment="Center" TextAlignment="Right" />
+        <TextBox x:Name="TextBox_HmdNativeResHeight_Scenario3" Grid.Column="4" Grid.Row="4" Text="1600" Margin="1" VerticalAlignment="Center" TextAlignment="Right" />-->
+
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_HmdNativeResHeight_Scenario1" Grid.Column="2" Grid.Row="4" Width="50" Margin="1" Minimum="1" Maximum="5000" Value="1600" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_HmdNativeResHeight_Scenario1_ValueChanged" PreviewKeyDown="DoubleUpDown_HmdNativeResHeight_Scenario1_PreviewKeyDown"/>
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_HmdNativeResHeight_Scenario2" Grid.Column="3" Grid.Row="4" Width="50" Margin="1" Minimum="1" Maximum="5000" Value="1600" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_HmdNativeResHeight_Scenario2_ValueChanged" PreviewKeyDown="DoubleUpDown_HmdNativeResHeight_Scenario2_PreviewKeyDown"/>
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_HmdNativeResHeight_Scenario3" Grid.Column="4" Grid.Row="4" Width="50" Margin="1" Minimum="1" Maximum="5000" Value="1600"  VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_HmdNativeResHeight_Scenario3_ValueChanged" PreviewKeyDown="DoubleUpDown_HmdNativeResHeight_Scenario3_PreviewKeyDown"/>
+
+        <TextBlock x:Name="TextBlock_aspectRatio_Scenario1"  Grid.Column="2" Grid.Row="5" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_aspectRatio_Scenario2"  Grid.Column="3" Grid.Row="5" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_aspectRatio_Scenario3"  Grid.Column="4" Grid.Row="5" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="TextBlock_widthLensDistMulti_Scenario1"  Grid.Column="2" Grid.Row="6" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_widthLensDistMulti_Scenario2"  Grid.Column="3" Grid.Row="6" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_widthLensDistMulti_Scenario3"  Grid.Column="4" Grid.Row="6" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="TextBlock_heightLensDistMulti_Scenario1"  Grid.Column="2" Grid.Row="7" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_heightLensDistMulti_Scenario2"  Grid.Column="3" Grid.Row="7" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_heightLensDistMulti_Scenario3"  Grid.Column="4" Grid.Row="7" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="TextBlock_resArea_Scenario1" Grid.Column="2" Grid.Row="8" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_resArea_Scenario2" Grid.Column="3" Grid.Row="8" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_resArea_Scenario3" Grid.Column="4" Grid.Row="8" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_SteamVrResPerEye_Scenario1" Grid.Column="2" Grid.Row="9" Width="50" Margin="1" Minimum="1" Maximum="999" Value="128" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_SteamVrResPerEye_Scenario1_ValueChanged" PreviewKeyDown="DoubleUpDown_SteamVrResPerEye_Scenario1_PreviewKeyDown"/>
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_SteamVrResPerEye_Scenario2" Grid.Column="3" Grid.Row="9" Width="50" Margin="1" Minimum="1" Maximum="999" Value="128" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_SteamVrResPerEye_Scenario2_ValueChanged" PreviewKeyDown="DoubleUpDown_SteamVrResPerEye_Scenario2_PreviewKeyDown"/>
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_SteamVrResPerEye_Scenario3" Grid.Column="4" Grid.Row="9" Width="50" Margin="1" Minimum="1" Maximum="999" Value="128"  VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_SteamVrResPerEye_Scenario3_ValueChanged" PreviewKeyDown="DoubleUpDown_SteamVrResPerEye_Scenario3_PreviewKeyDown"/>
+
+        <TextBlock x:Name="TextBlock_widthRpeMulti_Scenario1"  Grid.Column="2" Grid.Row="10" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_widthRpeMulti_Scenario2"  Grid.Column="3" Grid.Row="10" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_widthRpeMulti_Scenario3"  Grid.Column="4" Grid.Row="10" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="TextBlock_heightRpeMulti_Scenario1"  Grid.Column="2" Grid.Row="11" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_heightRpeMulti_Scenario2"  Grid.Column="3" Grid.Row="11" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_heightRpeMulti_Scenario3"  Grid.Column="4" Grid.Row="11" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_SteamVrCustResMulti_Scenario1" Grid.Column="2" Grid.Row="12" Width="50" Margin="1" Minimum="1" Maximum="999" Value="100" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_SteamVrCustResMulti_Scenario1_ValueChanged" PreviewKeyDown="DoubleUpDown_SteamVrCustResMulti_Scenario1_PreviewKeyDown"/>
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_SteamVrCustResMulti_Scenario2" Grid.Column="3" Grid.Row="12" Width="50" Margin="1" Minimum="1" Maximum="999" Value="250" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_SteamVrCustResMulti_Scenario2_ValueChanged" PreviewKeyDown="DoubleUpDown_SteamVrCustResMulti_Scenario2_PreviewKeyDown"/>
+        <xctk:IntegerUpDown x:Name="DoubleUpDown_SteamVrCustResMulti_Scenario3" Grid.Column="4" Grid.Row="12" Width="50" Margin="1" Minimum="1" Maximum="999" Value="500" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_SteamVrCustResMulti_Scenario3_ValueChanged" PreviewKeyDown="DoubleUpDown_SteamVrCustResMulti_Scenario3_PreviewKeyDown"/>
+
+        <TextBlock x:Name="TextBlock_widthCrmMulti_Scenario1"  Grid.Column="2" Grid.Row="13" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_widthCrmMulti_Scenario2"  Grid.Column="3" Grid.Row="13" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_widthCrmMulti_Scenario3"  Grid.Column="4" Grid.Row="13" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="TextBlock_heightCrmMulti_Scenario1"  Grid.Column="2" Grid.Row="14" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_heightCrmMulti_Scenario2"  Grid.Column="3" Grid.Row="14" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_heightCrmMulti_Scenario3"  Grid.Column="4" Grid.Row="14" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <xctk:DoubleUpDown x:Name="DoubleUpDown_DcsPixelDensity_Scenario1" Grid.Column="2" Grid.Row="15" Width="50" Margin="1" Minimum="0.01" Maximum="100" Value="1.0" Increment="0.1" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_DcsPixelDensity_Scenario1_ValueChanged" PreviewKeyDown="DoubleUpDown_DcsPixelDensity_Scenario1_PreviewKeyDown" />
+        <xctk:DoubleUpDown x:Name="DoubleUpDown_DcsPixelDensity_Scenario2" Grid.Column="3" Grid.Row="15" Width="50" Margin="1" Minimum="0.01" Maximum="100" Value="0.8" Increment="0.1" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_DcsPixelDensity_Scenario2_ValueChanged" PreviewKeyDown="DoubleUpDown_DcsPixelDensity_Scenario2_PreviewKeyDown"/>
+        <xctk:DoubleUpDown x:Name="DoubleUpDown_DcsPixelDensity_Scenario3" Grid.Column="4" Grid.Row="15" Width="50" Margin="1" Minimum="0.01" Maximum="100" Value="0.5" Increment="0.1" VerticalAlignment="Center" HorizontalAlignment="Right" ValueChanged="DoubleUpDown_DcsPixelDensity_Scenario3_ValueChanged" PreviewKeyDown="DoubleUpDown_DcsPixelDensity_Scenario3_PreviewKeyDown"/>
+
+        <TextBlock x:Name="TextBlock_dcsFrameResWidth_Scenario1"  Grid.Column="2" Grid.Row="16" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_dcsFrameResWidth_Scenario2"  Grid.Column="3" Grid.Row="16" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_dcsFrameResWidth_Scenario3"  Grid.Column="4" Grid.Row="16" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="TextBlock_dcsFrameResHeight_Scenario1"  Grid.Column="2" Grid.Row="17" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_dcsFrameResHeight_Scenario2"  Grid.Column="3" Grid.Row="17" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock_dcsFrameResHeight_Scenario3"  Grid.Column="4" Grid.Row="17" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="TextBlock_effectivePd_Scenario1"  Grid.Column="2" Grid.Row="18" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center" Background="LightGreen"/>
+        <TextBlock x:Name="TextBlock_effectivePd_Scenario2"  Grid.Column="3" Grid.Row="18" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center" Background="LightGreen"/>
+        <TextBlock x:Name="TextBlock_effectivePd_Scenario3"  Grid.Column="4" Grid.Row="18" Text="Aspect Ratio 1" HorizontalAlignment="Right" VerticalAlignment="Center" Background="LightGreen"/>
+
+
+    </Grid>
+</Window>
