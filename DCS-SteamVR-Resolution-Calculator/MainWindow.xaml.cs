@@ -6,6 +6,9 @@ using System.Windows.Input;
 Welcome to DCS SteaVR Resolution Calculator!
 Based on Jabbers research here: https://youtu.be/t1gcgAXhgtA
 Based on Jabbers spreadsheet here: https://docs.google.com/spreadsheets/d/1ygjuleAivvA4C-EnHU2Hc6AddoRzvBvpsxe8Wse8feE/edit#gid=0
+
+TODO: Make variables more user friendly.
+TODO: Release
 */
 
 namespace DCS_SteamVR_Resolution_Calculator
